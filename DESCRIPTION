@@ -1,0 +1,41 @@
+Package: amem
+Type: Package
+Title: Adaptable Mixed-Effects Models
+Version: 0.1.5.9999
+Authors@R: c(
+    person("Anthony", "Shook", email = "anthony.shook@mattersight.com", role = c("aut", "cre"))
+    )
+Description: Provides a framework for using custom models (linear or non-linear) within a 
+    mixed-effects model structure. This allows us to build models that utilize an arbitrary
+    method for generating predictions for fixed effects, which are then adjusted by calculating
+    the linear form of random-effects.
+License: file LICENSE
+Encoding: UTF-8
+Imports:
+  lme4,
+  methods,
+  mlmRev,
+  stats,
+  xgboost,
+  Matrix,
+  rBayesianOptimization
+Suggests:
+  testthat,
+  covr
+LazyData: true
+RoxygenNote: 6.0.1
+Collate: 
+    'custom-evals.R'
+    'default-parameters.R'
+    'ame-fit.R'
+    'ame-tune.R'
+    'callbacks.R'
+    'class-ameInfo.R'
+    'class-ameMod.R'
+    'create-internal-data.R'
+    'data.R'
+    'imports.R'
+    'predict-ameMod.R'
+    'methods-ameMod.R'
+    'utils.R'
+    'zzz.R'
