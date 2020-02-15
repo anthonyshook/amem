@@ -2,19 +2,24 @@
 % Please edit documentation in R/predict-ameMod.R
 \name{predict.ameMod}
 \alias{predict.ameMod}
-\title{Predict function for ameMod class}
+\title{Predict function for ameMod object}
 \usage{
-predict.ameMod(object, newdata, type_fixed, type_random, allow_new_levels,
-  separate_preds, na_action, ...)
+\method{predict}{ameMod}(
+  object,
+  newdata = NULL,
+  type = "raw",
+  allow_new_levels = FALSE,
+  separate_preds = FALSE,
+  na_action = stats::na.pass,
+  ...
+)
 }
 \arguments{
 \item{object}{an ameMod object}
 
 \item{newdata}{New data. If not provided, predictions will be generated from training data, if available}
 
-\item{type_fixed}{Type of prediction for fixed effects ("raw" or "prob")}
-
-\item{type_random}{Type of prediction for random effects ("response" or "link")}
+\item{type}{Type of prediction for fixed effects ("raw" or "prob")}
 
 \item{allow_new_levels}{Logical if new levels (or NA values) in newdata are allowed. If FALSE (default), such new values in newdata will trigger an error; if TRUE, then the prediction will use the unconditional (population-level) values for data with previously unobserved levels (or NAs).}
 
@@ -25,5 +30,5 @@ predict.ameMod(object, newdata, type_fixed, type_random, allow_new_levels,
 \item{...}{Other parameters to pass to \code{caret::predict}}
 }
 \description{
-Predict function for ameMod class
+Predict function for ameMod object
 }

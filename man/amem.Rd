@@ -4,10 +4,19 @@
 \alias{amem}
 \title{Function for fitting adaptable mixed effects models}
 \usage{
-amem(formula, data, val_data = NULL, method = "xgboost",
-  fixed_options = list(), min_iter = 10, max_iter = 20,
-  stopping_criteria = 1e-05, keep_training_data = TRUE, chatty = TRUE,
-  na_action = na.pass)
+amem(
+  formula,
+  data,
+  val_data = NULL,
+  method = "xgboost",
+  fixed_options = list(),
+  min_iter = 10,
+  max_iter = 20,
+  stopping_criteria = 1e-05,
+  keep_training_data = TRUE,
+  chatty = TRUE,
+  na_action = na.pass
+)
 }
 \arguments{
 \item{formula}{As with \code{lme4::lmer}, a two-sided linear formula object describing both the fixed-effects and random-effects part of the model, with the response on the left of a ~ operator and the terms, separated by + operators, on the right. Random-effects terms are distinguished by vertical bars (|) separating expressions for design matrices from grouping factors.}

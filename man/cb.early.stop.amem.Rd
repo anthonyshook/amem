@@ -4,8 +4,13 @@
 \alias{cb.early.stop.amem}
 \title{Early Stopping with required minimum}
 \usage{
-cb.early.stop.amem(stopping_criteria, min_iter, maximize = FALSE,
-  metric_name = NULL, verbose = FALSE)
+cb.early.stop.amem(
+  stopping_criteria,
+  min_iter,
+  maximize = FALSE,
+  metric_name = NULL,
+  verbose = FALSE
+)
 }
 \arguments{
 \item{stopping_criteria}{The minimum change value for stopping}

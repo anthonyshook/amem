@@ -4,8 +4,15 @@
 \alias{update_ameInfo_data}
 \title{Method to update ameInfo class with new data}
 \usage{
-update_ameInfo_data(object, GLL, TrainingMAE, TrainingR, HoldoutMAE, HoldoutR,
-  Time_Sec)
+update_ameInfo_data(
+  object,
+  GLL,
+  TrainingMAE,
+  TrainingR,
+  HoldoutMAE,
+  HoldoutR,
+  Time_Sec
+)
 }
 \arguments{
 \item{object}{an ameInfo object}

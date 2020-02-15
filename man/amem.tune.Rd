@@ -4,15 +4,21 @@
 \alias{amem.tune}
 \title{Bayesian optimization of amem model}
 \usage{
-amem.tune(formula, data, nfolds, val_data = NULL, tuning_params = NULL,
-  seed = as.integer(Sys.time()))
+amem.tune(
+  formula,
+  data,
+  nfolds = 1,
+  val_data = NULL,
+  tuning_params = NULL,
+  seed = as.integer(Sys.time())
+)
 }
 \arguments{
 \item{formula}{As with \code{lme4::lmer}, a two-sided linear formula object describing both the fixed-effects and random-effects part of the model, with the response on the left of a ~ operator and the terms, separated by + operators, on the right. Random-effects terms are distinguished by vertical bars (|) separating expressions for design matrices from grouping factors.}
 
 \item{data}{a data.frame containing the variables named in \code{formula}}
 
-\item{nfolds}{Number of folds for cross-validation (Required)}
+\item{nfolds}{Number of folds for cross-validation (Default is 1)}
 
 \item{val_data}{a data.frame, identical to \code{data}.  Optional, and separate from tuning. If provided, nfolds is ignored.}
 

@@ -4,8 +4,17 @@
 \alias{ameMod}
 \title{Initializer for the ameMod Class}
 \usage{
-ameMod(call, model_info, fixef_model, ranef_model, fixed_terms, random_terms,
-  resid, train_data, predictions)
+ameMod(
+  call,
+  model_info,
+  fixef_model,
+  ranef_model,
+  fixed_terms,
+  random_terms,
+  resid,
+  train_data,
+  predictions
+)
 }
 \description{
 Initializer for the ameMod Class
