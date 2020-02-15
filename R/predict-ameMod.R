@@ -1,28 +1,52 @@
 
-#' Predict function for ameMod class
+#' Predict function for ameMod object
 #'
 #' @param object an ameMod object
 #' @param newdata New data. If not provided, predictions will be generated from training data, if available
-#' @param type_fixed Type of prediction for fixed effects ("raw" or "prob")
-#' @param type_random Type of prediction for random effects ("response" or "link")
+#' @param type Type of prediction for fixed effects ("raw" or "prob")
 #' @param allow_new_levels Logical if new levels (or NA values) in newdata are allowed. If FALSE (default), such new values in newdata will trigger an error; if TRUE, then the prediction will use the unconditional (population-level) values for data with previously unobserved levels (or NAs).
 #' @param separate_preds Logical. If TRUE, a data.frame containing separate fixed/random effects columns is produced. If FALSE, only the final combined prediction (as a vector) is returned
 #' @param na_action function determining what should be done with missing values for fixed effects in newdata. The default is to predict NA: see na.pass
 #' @param ... Other parameters to pass to \code{caret::predict}
 #'
+#' @include predict-ameMod.R
+#'
 #' @export
 #'
 predict.ameMod <- function(object,
-                           newdata,
-                           type_fixed,
-                           type_random,
-                           allow_new_levels,
-                           separate_preds,
-                           na_action,
+                           newdata = NULL,
+                           type = "raw",
+                           allow_new_levels = FALSE,
+                           separate_preds = FALSE,
+                           na_action = stats::na.pass,
                            ...) {
 
+  # Input checking and data prep
+  if (identical(type, "raw")) {
+    type_fixed  <- "raw"
+    type_random <- "response"
+  } else {
+    stop("predict currently only accepts type = 'raw'")
+  }
 
-  # Stage data in proper format for fixed effect calculation?
+  # Check for object data if newdata is null
+  if (is.null(newdata) &
+      nrow(object@train_data) == 0) {
+    stop("The model object does not contain training data, so newdata cannot be empty.")
+  }
+
+  # Check that newdata, if it exists, contains the required columns
+  if (!is.null(newdata)) {
+
+    exp_terms <- c(object@fixed_terms,
+                   parse_random_effect_terms(object@random_terms, split_nests = TRUE))
+
+    if(!all(exp_terms %in% colnames(newdata))) {
+      stop("Missing expected columns in newdata.")
+    }
+  }
+
+  # Stage data in proper format for fixed effect calculation
   if (!is.null(newdata)) {
 
     new_random_terms <- parse_random_effect_terms(object@random_terms, split_nests = TRUE)
