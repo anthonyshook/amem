@@ -23,7 +23,7 @@ Suggests:
   testthat,
   covr
 LazyData: true
-RoxygenNote: 6.0.1
+RoxygenNote: 7.0.2
 Collate: 
     'custom-evals.R'
     'default-parameters.R'
@@ -35,7 +35,7 @@ Collate:
     'create-internal-data.R'
     'data.R'
     'imports.R'
-    'predict-ameMod.R'
     'methods-ameMod.R'
+    'predict-ameMod.R'
     'utils.R'
     'zzz.R'

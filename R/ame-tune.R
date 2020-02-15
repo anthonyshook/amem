@@ -2,7 +2,7 @@
 #'
 #' @param formula As with \code{lme4::lmer}, a two-sided linear formula object describing both the fixed-effects and random-effects part of the model, with the response on the left of a ~ operator and the terms, separated by + operators, on the right. Random-effects terms are distinguished by vertical bars (|) separating expressions for design matrices from grouping factors.
 #' @param data a data.frame containing the variables named in \code{formula}
-#' @param nfolds Number of folds for cross-validation (Required)
+#' @param nfolds Number of folds for cross-validation (Default is 1)
 #' @param val_data a data.frame, identical to \code{data}.  Optional, and separate from tuning. If provided, nfolds is ignored.
 #' @param tuning_params A list containing the parameters to tune, and the bounds of the search space for xgboost (see \code{?xgb.train} for descriptions. Currently accepts:
 #' \itemize{
@@ -16,9 +16,10 @@
 #' }
 #' @param seed Used for generating cross-validation folds (Default uses system time)
 #'
+#' @export
 amem.tune <- function(formula,
                       data,
-                      nfolds,
+                      nfolds = 1,
                       val_data = NULL,
                       tuning_params = NULL,
                       seed = as.integer(Sys.time())) {
@@ -60,7 +61,9 @@ amem.tune <- function(formula,
 
   if (is.null(val_data)) {
     # Define the folds
-    cv_folds <- define_cv_folds(num_rows = nrows(data), nfolds = nfolds, seed = seed)
+    cv_folds <- define_cv_folds(num_rows = nrow(data), nfolds = nfolds, seed = seed)
+    # Currently this will break.  It's intended to provide a grid search functionality,
+    # but that needs to be -built- in order to work.
 
   } else {
     #
