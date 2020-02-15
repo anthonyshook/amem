@@ -13,7 +13,8 @@ tstmod <- ameMod(call = call("amem", formula = 'log_radon ~ Uppm + activity + (1
                  fixed_terms = c("Uppm", "activity"),
                  random_terms = c("1 | basement"),
                  resid = rep(0, times = nrow(radon)),
-                 train_data = radon)
+                 train_data = radon,
+                 predictions = data.frame())
 
 test_that("Create and show ameMod object", {
 
