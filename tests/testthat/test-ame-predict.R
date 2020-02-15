@@ -15,24 +15,8 @@ tstmod <- ameMod(call = call("amem", formula = 'log_radon ~ Uppm + activity + (1
                  fixed_terms = c("Uppm", "activity"),
                  random_terms = c("1 | basement"),
                  resid = rep(0, times = nrow(radon)),
-                 train_data = radon)
-
-
-test_that("Error with mismatched preds", {
-
-  expect_error(predict.ameMod(tstmod,
-                              newdata = NULL,
-                              type_fixed = "raw",
-                              type_random = "link"))
-
-})
-
-
-# test_that("Error with unknown method", {
-#   expect_error(amem("log_radon ~ Uppm + (1|basement)",
-#                     data = radon,
-#                     method = "HumanInTheLoop"))
-# })
+                 train_data = radon,
+                 predictions = list())
 
 test_that("AMEM produces expected outputs", {
   expect_output({mod <- amem("log_radon ~ Uppm + pcterr + (1|basement)",
@@ -78,12 +62,12 @@ test_that("ameFit accepts validation data", {
 
 test_that("Prediction with new data works", {
 
-  (P <- predict.ameMod(tstmod,
-                       newdata = radon,
-                       type_fixed = "raw",
-                       type_random = "response",
-                       separate_preds = FALSE,
-                       allow_new_levels = TRUE))
+  (P <- predict(tstmod,
+                newdata = radon,
+                type_fixed = "raw",
+                type_random = "response",
+                separate_preds = FALSE,
+                allow_new_levels = TRUE))
 
   expect_true(all(dim(P) == c(nrow(radon), 3)))
 
