@@ -8,7 +8,7 @@ Currently the model only supports XGBoost as a test case. Future development sho
 
 ## Using the model
 
-The syntax is meant, in the simplest form, to emulate the `lmer` function from the [https://github.com/lme4/lme4](lme4 package).
+The syntax is meant, in the simplest form, to emulate the `lmer` function from the (https://github.com/lme4/lme4)[lme4 package].
 
 ``` r
 # Built in RADON dataset
