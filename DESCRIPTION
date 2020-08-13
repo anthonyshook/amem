@@ -1,7 +1,7 @@
 Package: amem
 Type: Package
 Title: Adaptable Mixed-Effects Models
-Version: 0.1.5.9999
+Version: 0.1.6
 Authors@R: c(
     person("Anthony", "Shook", email = "anthony.shook@mattersight.com", role = c("aut", "cre"))
     )
