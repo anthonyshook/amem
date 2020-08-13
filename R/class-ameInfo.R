@@ -14,7 +14,6 @@ ameInfo <- setClass("ameInfo",
                     ),
                     prototype = list(
                       final_score = NA_real_,
-                      best_iteration = 0L,
                       converged = FALSE,
                       num_iters = 0L,
                       training_info = data.frame(Iteration = integer(),
