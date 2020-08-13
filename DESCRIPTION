@@ -23,7 +23,7 @@ Suggests:
   testthat,
   covr
 LazyData: true
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.0
 Collate: 
     'custom-evals.R'
     'default-parameters.R'
