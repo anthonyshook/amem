@@ -4,7 +4,9 @@
 \name{radon}
 \alias{radon}
 \title{Radon data}
-\format{An object of class \code{data.frame} with 919 rows and 30 columns.}
+\format{
+An object of class \code{data.frame} with 919 rows and 30 columns.
+}
 \usage{
 radon
 }
